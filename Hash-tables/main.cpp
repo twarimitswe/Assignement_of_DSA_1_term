@@ -3,6 +3,10 @@
 #include <string>
 #include <list>
 
+//Twarimitswe Aaron 
+//Igihozo Belise
+//Kamana Clare
+
 using namespace std;
 
 // A generic Hash Table implementation handling its own load factor and rehashing
@@ -20,8 +24,6 @@ private:
     size_t numElements;
     size_t tableSize;
     
-    // Load factor threshold (alpha). The prompt mentioned (alpha > 0), typically this is 0.75.
-    // Assuming 0.75 as the standard threshold for balancing memory and performance.
     const double MAX_LOAD_FACTOR = 0.75; 
 
     size_t hashFunction(const K& key) {
