@@ -2,5 +2,9 @@
 1,Electronics,Category
 2,TV,Model
 3,Sony Bravia,Brand
+3,Iphone,Brand
+3,LG,Brand
+3,Samsung,Brand
 2,Phone,Model
 3,iPhone 15 Pro,Brand
+1,NonElectronics,Category

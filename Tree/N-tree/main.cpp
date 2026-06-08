@@ -40,17 +40,32 @@ int main() {
         if (choice == 6) break;
 
         switch (choice) {
-            case 1:
+            case 1: {
                 std::cout << "Parent Name: "; std::getline(std::cin, parent);
+                
+                StoreSystem::Node* parentNode = myStore.find(parent);
+                if (!parentNode) {
+                    std::cout << ">> Error: Parent not found." << std::endl;
+                    break;
+                }
+
                 std::cout << "Child Name: "; std::getline(std::cin, name);
-                std::cout << "Category/Type: "; std::getline(std::cin, type);
+
+                // Automatically determine type based on parent's type
+                if (parentNode->type == "Store") type = "Category";
+                else if (parentNode->type == "Category") type = "Model";
+                else if (parentNode->type == "Model") type = "Brand";
+                else if (parentNode->type == "Brand") type = "Item";
+                else type = "Sub-Item";
+
                 if (myStore.add(parent, name, type)) {
-                    std::cout << BLUE << ">> Successfully added!" << RESET << std::endl;
+                    std::cout << BLUE << ">> Successfully added " << name << " as [" << type << "]!" << RESET << std::endl;
                     myStore.save(DATA_FILE); 
                 } else {
-                    std::cout << ">> Error: Parent not found." << std::endl;
+                    std::cout << ">> Error: Could not add node (check if it already exists)." << std::endl;
                 }
                 break;
+            }
 
             case 2:
                 std::cout << "Current Node Name: "; std::getline(std::cin, name);
